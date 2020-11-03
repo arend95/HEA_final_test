@@ -1,15 +1,17 @@
 comp pow
-par 1 1 norm v 1.6e8
-par 1 1 gamm v 1.65
+par 1 1 norm v 1.79e8
+par 1 1 gamm v 1.67
 
 comp dbb
-par 1 2 norm v 5e3
-par 1 2 t v 6e-2
+par 1 2 norm v 3e5
+par 1 2 t v 3.5e-2
 
 comp xabs
-par 1 3 nh v 1e-4
-par 1 3 nh s f
-par 1 3 zv v 200
+par 1 3 nh v 8e-4
+par 1 3 xil v 1.4
+par 1 3 zv v -2e3
+par 1 3 07 v 11
+par 1 3 26 v 2
 
 comp reds
 par 1 4 z v 0.0139
