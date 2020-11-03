@@ -1,6 +1,6 @@
 This folder contains relevant output images
 
-![](https://github.com/arend95/HEA_final_test/blob/main/Images/eff_area.png)
+![Instrument effective area](https://github.com/arend95/HEA_final_test/blob/main/Images/eff_area.png)
 
 ![](https://github.com/arend95/HEA_final_test/blob/main/Images/spectrum.png)
 
