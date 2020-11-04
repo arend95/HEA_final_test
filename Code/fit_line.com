@@ -59,4 +59,4 @@ par 1 3 zv s t
 fit
 
 par 1 2 rout v 66
-par 1 2 s f
+par 1 2 rout s f
