@@ -149,5 +149,3 @@ par     1    7 h    status thawn
 par     1    7 i    range    0.0000000E+00  9.0000000E+01
 par     1    7 i    value    2.9923384E+01
 par     1    7 i    status thawn
-par    -1    1 norm value    1.00000E+00
-par    -1    1 norm status frozen
