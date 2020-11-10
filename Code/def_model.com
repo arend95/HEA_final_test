@@ -5,7 +5,7 @@ par 1 1 gamm v 1.67
 comp dbb
 par 1 2 norm v 6e4
 par 1 2 t v 3.5e-2
-par 1 2 rout v 66
+par 1 2 rout v 1000
 
 comp xabs
 par 1 3 nh v 8e-4

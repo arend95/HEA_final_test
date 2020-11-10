@@ -1,9 +1,12 @@
-par 1 6 norm s f
-par 1 6 e s f
-par 1 7 r1 s t
+par 1 6 norm s t
+par 1 6 e s t
 
 fit
 
+par 1 6 norm s f
+par 1 6 e s f
+
+par 1 7 r1 s t
 par 1 7 r2 s t
 
 fit
@@ -58,5 +61,4 @@ par 1 3 zv s t
 
 fit
 
-par 1 2 rout v 66
-par 1 2 rout s f
+calc
