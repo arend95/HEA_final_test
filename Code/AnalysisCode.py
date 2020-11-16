@@ -2,6 +2,8 @@ import numpy as np
 import math
 from amuse.lab import units, constants
 from operator import add
+import matplotlib.pyplot as pt
+from amuse.plot import plot
 
 G = constants.G
 sig_sb = constants.Stefan_hyphen_Boltzmann_constant
@@ -57,3 +59,35 @@ def L_Edd(M):
 def err_L_Edd(err_M):
     err_L_Edd = list(map(lambda x: x * 4 * pi * G * m_p * c / sig_T, err_M))
     return err_L_Edd
+
+def em_profile(ri, ro, h, q, M, M_dot):
+    r = np.linspace(ri, ro, num=100)
+    # first calculate broad line emissivity
+    I = (r**2+h**2)**(-q/2)
+    I_sum = np.sum(I)
+    I_norm = I / I_sum
+    pt.plot(r, I_norm)
+    pt.xscale('log')
+    pt.yscale('log')
+    pt.xlabel('Disk radius in units GM/c**2')
+    pt.ylabel('Normalized emissivity in arbitrary units')
+    pt.title('Normalized disk broad line emissivity as function of disk radius')
+    pt.show()
+    
+    Q = 3 * G * M * M_dot * (1 - np.sqrt(ri/r)) / (8 * pi * ((r*G*M/c**2)**3))
+    print(Q)
+    print(r)
+    plot(r|units.none, Q)
+    pt.xscale('log')
+    pt.yscale('log')
+    pt.xlabel('Disk radius in units GM/c**2')
+    pt.ylabel('Emissivity in W/m**2')
+    pt.title('Disk black body emissivity as function of disk radius')
+    pt.show()
+    
+    
+    
+    
+    
+    
+    

@@ -6,6 +6,15 @@ from amuse.lab import units
 ri = 6.0689
 err_ri =[0.1771, 0.19679]
 
+ro = 400
+err_ro = [0, 40]
+
+h = 1.6e-2
+err_h = [2.9, 1.6e-2]
+
+q = 2.51
+err_q = [2.3e-2, 2.3e-2]
+
 A = 6.81709e5
 err_A = [25824, 32180]
 
@@ -36,3 +45,4 @@ Eddington luminosity is {} and the errors are {} and {}.".format(M.in_(units.MSu
                 -err_L_Edd[1].in_(units.LSun)
       )
     )
+ac.em_profile(ri, ro, h, q, M, M_dot)    
