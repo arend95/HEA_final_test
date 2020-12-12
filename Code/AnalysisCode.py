@@ -60,6 +60,32 @@ def err_L_Edd(err_M):
     err_L_Edd = list(map(lambda x: x * 4 * pi * G * m_p * c / sig_T, err_M))
     return err_L_Edd
 
+def m_out_omega(xil, vz, M_dot):
+    Ltot = (1.812529e37 + 2.551335e37 + 1.216952e36) | units.W
+    mh = 1.6735575e-27 | units.kg
+    out_omega = vz*mh*Ltot/xil
+    omega_upper = M_dot/out_omega
+    return out_omega, omega_upper
+
+def err_m_out(xil, vz, M_dot, err_xil, err_vz,
+              err_M_dot, m_out_omega):
+    Ltot = (1.812529e37 + 2.551335e37 + 1.216952e36) | units.W
+    mh = 1.6735575e-27 | units.kg
+    comp_xil = list(map(lambda x: (x*vz*mh*Ltot/xil**2)**2, err_xil))
+    comp_vz = list(map(lambda x: (x*mh*Ltot/xil)**2, err_vz))
+    err_m_out = list(map(add, comp_xil, comp_vz))
+    err_m_out = list(map(lambda x: np.sqrt(x), err_m_out))
+    
+    comp_M_dot = list(map(lambda x: (x/m_out_omega)**2, err_M_dot))
+    comp_m_out = list(map(lambda x: (x*M_dot/m_out_omega**2)**2, err_m_out))
+    err_omega = list(map(add, comp_M_dot, comp_m_out))
+    err_omega = list(map(lambda x: np.sqrt(x),err_omega))
+    return err_m_out, err_omega
+
+def est_period(M):
+    P = 20*np.sqrt(10)*pi*G*M/(c**3)
+    return P
+    
 def em_profile(ri, ro, h, q, M, M_dot):
     r = np.linspace(ri, ro, num=100)
     # first calculate broad line emissivity
@@ -75,8 +101,6 @@ def em_profile(ri, ro, h, q, M, M_dot):
     pt.show()
     
     Q = 3 * G * M * M_dot * (1 - np.sqrt(ri/r)) / (8 * pi * ((r*G*M/c**2)**3))
-    print(Q)
-    print(r)
     plot(r|units.none, Q)
     pt.xscale('log')
     pt.yscale('log')
